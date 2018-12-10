@@ -18,7 +18,7 @@ class GreatCalculator(QMainWindow,Ui_MainWindow):
             try:
                 config = json.loads(file.read())
                 if type(config) != dict:
-                    raise TypeError("Неправильный формат файла")
+                    raise TypeError("РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ С„РѕСЂРјР°С‚ С„Р°Р№Р»Р°")
                 return config
             except BaseException as err:
                 return err
@@ -31,26 +31,26 @@ class GreatCalculator(QMainWindow,Ui_MainWindow):
         return True
 
     def add_timer(self, time, note):
-        # Создание новой заметки
-        # Время передается в секуднах
+        # РЎРѕР·РґР°РЅРёРµ РЅРѕРІРѕР№ Р·Р°РјРµС‚РєРё
+        # Р’СЂРµРјСЏ РїРµСЂРµРґР°РµС‚СЃСЏ РІ СЃРµРєСѓРґРЅР°С…
         if note in self.notes:
-            raise NameError("Напоминалка с такой заметкой уже существует!")
+            raise NameError("РќР°РїРѕРјРёРЅР°Р»РєР° СЃ С‚Р°РєРѕР№ Р·Р°РјРµС‚РєРѕР№ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!")
         timer = Qtimer(self)
         timer.singleShot(time*1000, self.ring)
         self.notes[timer] = note
 
     def remove_timer(self, timer):
-        # Удаление заметки
+        # РЈРґР°Р»РµРЅРёРµ Р·Р°РјРµС‚РєРё
         try:
             return self.notes.pop[timer]
         except KeyError:
-            # TODO: Если такого таймера не существует, то...
-            # TODO: Обсудить реальность такой ситуации
+            # TODO: Р•СЃР»Рё С‚Р°РєРѕРіРѕ С‚Р°Р№РјРµСЂР° РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚, С‚Рѕ...
+            # TODO: РћР±СЃСѓРґРёС‚СЊ СЂРµР°Р»СЊРЅРѕСЃС‚СЊ С‚Р°РєРѕР№ СЃРёС‚СѓР°С†РёРё
             pass
         pass
 
     def ring(self):
-        # TODO: Написать функцию, которая будет показывать уведомление, что время истекло (Текст заметки можно взять из remove_timer)
+        # TODO: РќР°РїРёСЃР°С‚СЊ С„СѓРЅРєС†РёСЋ, РєРѕС‚РѕСЂР°СЏ Р±СѓРґРµС‚ РїРѕРєР°Р·С‹РІР°С‚СЊ СѓРІРµРґРѕРјР»РµРЅРёРµ, С‡С‚Рѕ РІСЂРµРјСЏ РёСЃС‚РµРєР»Рѕ (РўРµРєСЃС‚ Р·Р°РјРµС‚РєРё РјРѕР¶РЅРѕ РІР·СЏС‚СЊ РёР· remove_timer)
         pass
     pass
 
