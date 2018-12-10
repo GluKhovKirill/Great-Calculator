@@ -3,8 +3,8 @@ import json
 from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow
 from PyQt5.Core import QTimer
 from UI_data import Ui_MainWindow
- 
- 
+
+
 class GreatCalculator(QMainWindow,Ui_MainWindow):
     def __init__(self):
         self.colors = {}
@@ -12,45 +12,45 @@ class GreatCalculator(QMainWindow,Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
         pass
-    
+
     def load_config(self):
         with open("colors.cnf") as file:
             try:
                 config = json.loads(file.read())
                 if type(config) != dict:
-                    raise TypeError("РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ С„РѕСЂРјР°С‚ С„Р°Р№Р»Р°")
+                    raise TypeError("Неправильный формат файла")
                 return config
             except BaseException as err:
                 return err
         pass
-    
+
     def dump_config(self):
         config = json.dumps(self.colors)
         with open("colors.cnf", "w") as file:
             file.write(config)
         return True
-    
+
     def add_timer(self, time, note):
-        # РЎРѕР·РґР°РЅРёРµ РЅРѕРІРѕР№ Р·Р°РјРµС‚РєРё
-        # Р’СЂРµРјСЏ РїРµСЂРµРґР°РµС‚СЃСЏ РІ СЃРµРєСѓРґРЅР°С…
+        # Создание новой заметки
+        # Время передается в секуднах
         if note in self.notes:
-            raise NameError("РќР°РїРѕРјРёРЅР°Р»РєР° СЃ С‚Р°РєРѕР№ Р·Р°РјРµС‚РєРѕР№ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!")
+            raise NameError("Напоминалка с такой заметкой уже существует!")
         timer = Qtimer(self)
         timer.singleShot(time*1000, self.ring)
         self.notes[timer] = note
-    
+
     def remove_timer(self, timer):
-        # РЈРґР°Р»РµРЅРёРµ Р·Р°РјРµС‚РєРё
+        # Удаление заметки
         try:
             return self.notes.pop[timer]
         except KeyError:
-            # TODO: Р•СЃР»Рё С‚Р°РєРѕРіРѕ С‚Р°Р№РјРµСЂР° РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚, С‚Рѕ...
-            # TODO: РћР±СЃСѓРґРёС‚СЊ СЂРµР°Р»СЊРЅРѕСЃС‚СЊ С‚Р°РєРѕР№ СЃРёС‚СѓР°С†РёРё
+            # TODO: Если такого таймера не существует, то...
+            # TODO: Обсудить реальность такой ситуации
             pass
         pass
-    
+
     def ring(self):
-        # TODO: РќР°РїРёСЃР°С‚СЊ С„СѓРЅРєС†РёСЋ, РєРѕС‚РѕСЂР°СЏ Р±СѓРґРµС‚ РїРѕРєР°Р·С‹РІР°С‚СЊ СѓРІРµРґРѕРјР»РµРЅРёРµ, С‡С‚Рѕ РІСЂРµРјСЏ РёСЃС‚РµРєР»Рѕ (РўРµРєСЃС‚ Р·Р°РјРµС‚РєРё РјРѕР¶РЅРѕ РІР·СЏС‚СЊ РёР· remove_timer)
+        # TODO: Написать функцию, которая будет показывать уведомление, что время истекло (Текст заметки можно взять из remove_timer)
         pass
     pass
 

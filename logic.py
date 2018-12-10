@@ -1,8 +1,7 @@
 import math
 
 
-# Р‘Р»РѕРє РІС‹С‡РёСЃР»РёС‚РµР»СЊРЅС‹С… С„СѓРЅРєС†РёР№
-# РљРѕСЂРѕС‚РєРёРµ, РЅРѕ РЅСѓР¶РЅС‹Рµ С„СѓРЅРєС†РёРё
+
 def pi(): return math.pi
 
 def e(): return math.e
@@ -11,6 +10,7 @@ def module(number): return abs(number)
 
 
 def amount(first, second):
+    # Сумма (<first> + <second>)
     try:
         first, second = float(first), float(second)
         return first + second
@@ -19,6 +19,7 @@ def amount(first, second):
     
     
 def difference(first, second):
+    # Разность (<first> - <second>)
     try:
         first, second = float(first), float(second)
         return first - second
@@ -27,6 +28,7 @@ def difference(first, second):
 
 
 def multiply(first, second):
+    # Произведение (<first> * <second>)
     try:
         first, second = float(first), float(second)
         return first * second
@@ -35,6 +37,7 @@ def multiply(first, second):
     
 
 def division(first, second):
+    # Частное (<first> / <second>)
     try:
         first, second = float(first), float(second)
         return first / second
@@ -43,6 +46,7 @@ def division(first, second):
     
 
 def factorial(number):
+    # Получение факториала (<number>!)
     try:
         number = int(number)
         return math.factorial(number)
@@ -51,6 +55,7 @@ def factorial(number):
     
 
 def raise_to_a_power(number, degree):
+    # Возведение в степень (<number>^<degree>)
     try:
         return number ** degree
     except BaseException:
@@ -58,6 +63,7 @@ def raise_to_a_power(number, degree):
     
     
 def square_root(number):
+    # Извлечение квадратного корня
     if number < 0: return False
     try:
         return float(number) ** 0.5
@@ -66,6 +72,8 @@ def square_root(number):
 
 
 def in_decimal_system(number, base):
+    # Перевод в десятичную систему счисления, 
+    # где число - <number>, а <base> - система счисления
     try:
         return int(str(number), int(base))
     except ValueError:
@@ -73,6 +81,7 @@ def in_decimal_system(number, base):
 
 
 def log(number, base=None):
+    # Получение логарифма <number> по основанию <base>
     try:
         number = float(number)
         if base:
@@ -85,6 +94,7 @@ def log(number, base=None):
 
 
 def degrees_to_radians(degrees):
+    # Перевод градусов в радианы
     try:
         degrees = float(degrees)
         return degrees/360*math.pi*2
@@ -93,6 +103,7 @@ def degrees_to_radians(degrees):
 
 
 def radians_to_degrees(radians):
+    # Перевод радианов в градусы
     try:
         radians = float(radians)
         degrees = (radians * 180) / pi()
@@ -102,6 +113,7 @@ def radians_to_degrees(radians):
 
 
 def cosine(degrees):   
+    # Косинус
     radians = degrees_to_radians(degrees)
     if radians:
         return math.cos(radians)
@@ -109,6 +121,7 @@ def cosine(degrees):
 
 
 def sine(degrees):
+    # Синус
     radians = degrees_to_radians(degrees)
     if radians:
         return math.sin(radians)
@@ -116,6 +129,7 @@ def sine(degrees):
 
 
 def tangent(degrees):
+    # Тангенс
     radians = degrees_to_radians(degrees)
     if radians:
         return math.tan(radians)
