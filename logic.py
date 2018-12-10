@@ -112,25 +112,28 @@ def radians_to_degrees(radians):
         return False
 
 
-def cosine(degrees):   
+def cosine(radians, is_degree=False):   
     # Косинус
-    radians = degrees_to_radians(degrees)
+    if is_degree:
+        radians = degrees_to_radians(degrees)
     if radians:
         return math.cos(radians)
     return False
 
 
-def sine(degrees):
+def sine(radians, is_degree=False):
     # Синус
-    radians = degrees_to_radians(degrees)
+    if is_degree:
+        radians = degrees_to_radians(degrees)
     if radians:
         return math.sin(radians)
     return False    
 
 
-def tangent(degrees):
+def tangent(radians, is_degree=False):
     # Тангенс
-    radians = degrees_to_radians(degrees)
+    if is_degree:
+        radians = degrees_to_radians(degrees)
     if radians:
         return math.tan(radians)
     return False
