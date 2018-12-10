@@ -1,76 +1,75 @@
 import math
 
 
-# Р‘Р»РѕРє РІС‹С‡РёСЃР»РёС‚РµР»СЊРЅС‹С… С„СѓРЅРєС†РёР№
+# Блок вычислительных функций
+# Короткие, но нужные функции
+def pi(): return math.pi
+
+def e(): return math.e
+
+def module(number): return abs(number)
+
 
 def amount(first, second):
-    if (first == "ERR") or (second == "ERR"):
-        return "ERR"
-    else:
+    try:
+        first, second = float(first), float(second)
         return first + second
+    except ValueError:
+        return False
     
-
+    
 def difference(first, second):
-    if (first == "ERR") or (first == "ERR"):
-        return "ERR"
-    else:
+    try:
+        first, second = float(first), float(second)
         return first - second
-    
+    except ValueError:
+        return False
+
 
 def multiply(first, second):
-    if (first == "ERR") or (first == "ERR"):
-        return "ERR"
-    else:
+    try:
+        first, second = float(first), float(second)
         return first * second
+    except BaseException:
+        return False
     
 
 def division(first, second):
-    if (first == "ERR") or (second == "ERR") or (second == 0):
-        return "ERR"
-    else:
-        return first / second    
+    try:
+        first, second = float(first), float(second)
+        return first / second
+    except BaseException:
+        return False    
     
 
 def factorial(number):
     try:
         number = int(number)
         return math.factorial(number)
-    except ValueError:
-        return "ERR"
-    except TypeError:
-        return "ERR"
+    except BaseException:
+        return False
     
 
 def raise_to_a_power(number, degree):
-    if (number == "ERR") or (degree == "ERR"):
-        return "ERR"
-    else:
-        return first ** degree
+    try:
+        return number ** degree
+    except BaseException:
+        return False
     
     
 def square_root(number):
-    if number < 0:
-        return "ERR"
-    return number ** 0.5
-
-
-def module(number):
-    return abs(number)
+    if number < 0: return False
+    try:
+        return float(number) ** 0.5
+    except ValueError:
+        return False
 
 
 def in_decimal_system(number, base):
     try:
         return int(str(number), int(base))
     except ValueError:
-        return "ERR"
-
-
-def pi():
-    return math.pi
-
-
-def e():
-    return math.e
+        return False
 
 
 def log(number, base=None):
@@ -82,7 +81,7 @@ def log(number, base=None):
         else:
             return math.log(number)
     except ValueError:
-        return "ERR"
+        return False
 
 
 def degrees_to_radians(degrees):
@@ -121,5 +120,3 @@ def tangent(degrees):
     if radians:
         return math.tan(radians)
     return False
-
-
