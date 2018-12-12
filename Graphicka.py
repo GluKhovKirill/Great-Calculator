@@ -138,10 +138,12 @@ class Ui_Dialog(object):
         self.radians = QtWidgets.QRadioButton(Dialog)
         self.radians.setGeometry(QtCore.QRect(50, 80, 82, 17))
         self.radians.setObjectName("radians")
-
+        
+        
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-
+        
+        
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
