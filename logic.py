@@ -13,7 +13,7 @@ class MathExecutor:
         self.equation = (first, operand, second, is_degree)
     
     def execute(self):
-        #"5+5*6-9"
+        # Сам исполнитель (вычислитель)
         operators = {"+": self.amount,
                     "-": self.difference,
                     "*": self.multiply,
@@ -47,13 +47,11 @@ class MathExecutor:
         first, operator, second, is_degree = self.equation
         if operator in operators:
             answer = operators[operator](first, second, is_degree)
-            # print("ANS:",answer)
             if answer[0]:
                 return str(answer[1])
             else:
                 return self.error_codes[answer[1]]
         else:
-            # print(operator)
             return self.error_codes["OPS"]
          
     def pi(self, *nothing): return (True, math.pi)
@@ -296,6 +294,7 @@ class MathExecutor:
         return self.raise_to_a_power(10, number)
     
     def cube_root(self, number, *nothing):
+        # Корень кубический
         try:
             number = float(number)
             return (True, number ** (1/3))
@@ -307,6 +306,7 @@ class MathExecutor:
             return (False, "ERR") 
     
     def one_div_x(self, number, *nothing):
+        # Вычисление 1/x
         try:
             return (True, 1 / float(number))
         except ValueError:
@@ -315,15 +315,15 @@ class MathExecutor:
             return (False, "NONE")
         except BaseException:
             return (False, "ERR")         
-    #ВАЛИДНО ^
     
     def convert_units(self, first, nothing, is_degree=False):
-        #print(first, is_degree)
+        # Преобразование из градусов в радианы и наоборот
         if is_degree:
             return self.degrees_to_radians(first)
         return self.radians_to_degrees(first)
     
     def percents(self, number, *nothing):
+        # Перевод в проценты
         try:
             number = float(number)
             perc = number * 100
@@ -337,6 +337,7 @@ class MathExecutor:
             return (False, "ERR")  
     
     def un_percents(self, perc, *nothing):
+        # Перевод обратно
         try:
             perc = float(perc.replace("%", ""))
             num = perc / 100

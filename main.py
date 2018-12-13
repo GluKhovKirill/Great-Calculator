@@ -95,7 +95,6 @@ class GreatCalculator(QMainWindow,Ui_Dialog):
         try:
             with open("colors.cnf") as file:
                 config = json.loads(file.read())
-                #print(config)
                 if type(config) != dict:
                     raise TypeError("Неправильный формат файла")
                 else:
@@ -130,7 +129,6 @@ class GreatCalculator(QMainWindow,Ui_Dialog):
         while not answer_color.isValid():
             answer_color = QColorDialog.getColor(title="Такой цвет невозможен. Выберите иной.")
         self.colors["answer_txt"] = answer_color.name()
-        # print(self.colors)
         self.repaint_all()
 
     def save_result(self):
