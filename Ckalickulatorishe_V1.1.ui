@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>700</width>
+    <width>750</width>
     <height>400</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
     <rect>
      <x>50</x>
      <y>120</y>
-     <width>640</width>
+     <width>688</width>
      <height>251</height>
     </rect>
    </property>
@@ -283,6 +283,26 @@
       </attribute>
      </widget>
     </item>
+    <item row="2" column="6">
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>Изменить цвета (и сохранить в файл)</string>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
+    <item row="4" column="6">
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="text">
+       <string>Загрузить цвета</string>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QLabel" name="label">
@@ -323,7 +343,7 @@
     <rect>
      <x>496</x>
      <y>90</y>
-     <width>195</width>
+     <width>241</width>
      <height>20</height>
     </rect>
    </property>
@@ -369,26 +389,26 @@
      <x>10</x>
      <y>10</y>
      <width>341</width>
-     <height>51</height>
+     <height>53</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="info_1">
       <property name="text">
        <string>Если вы собираетесь использовать тригонометрические функции</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="info_2">
       <property name="text">
        <string> переводить градусы в радианы </string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="label_4">
+     <widget class="QLabel" name="info_3">
       <property name="text">
        <string>(радианы в градусы) - укажите вводимую величину</string>
       </property>
@@ -439,7 +459,7 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
