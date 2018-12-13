@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QMainWindow, QPushButton, QColorDialog
 from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QColor
 from Graphicka import Ui_Dialog
-from Logic import MathExecutor
+from logic import MathExecutor
 
 
 class GreatCalculator(QMainWindow,Ui_Dialog):
@@ -37,7 +37,8 @@ class GreatCalculator(QMainWindow,Ui_Dialog):
         self.buttonGroup_2.buttonClicked.connect(self.change_units)
         for button in self.buttonGroup.buttons():
             self.change_color(self.colors["button_txt"], button)
-            button.clicked.connect(self.set_answer)
+            if button.__class__ == QPushButton:
+                button.clicked.connect(self.set_answer)
         pass
 
     def change_color(self, color, element):
@@ -71,17 +72,15 @@ class GreatCalculator(QMainWindow,Ui_Dialog):
         operator = self.sender().text()        
         operators = {"C": self.clr,
                      "CE": self.clr_all,
-                     "Изменить цвета (и сохранить в файл)": self.change_all_colors,
-                     "Загрузить цвета": self.load_colors,
+                     "Изменить цвета ": self.change_all_colors,
+                     "Загрузить цвета": self.load_all_colors,
                      "Сохранить цвета в файл (config.cnf)": self.dump_colors,
                      "Сохранить результат в answer.txt": self.save_result} 
         if operator in operators:
             operators[operator]()
         else:
-            #print([operator])
             executor = MathExecutor(first, operator, second, self.is_degree)
             answer = executor.execute()
-            #print("A:",answer)
             self.answer.setText(answer)
 
     def clr(self):
@@ -92,11 +91,11 @@ class GreatCalculator(QMainWindow,Ui_Dialog):
         self.second.setText("")
         self.answer.setText("")
 
-    def load_colors(self):
-        self.cos.setStyleSheet("color: red")
+    def load_all_colors(self):
         try:
             with open("colors.cnf") as file:
                 config = json.loads(file.read())
+                #print(config)
                 if type(config) != dict:
                     raise TypeError("Неправильный формат файла")
                 else:
