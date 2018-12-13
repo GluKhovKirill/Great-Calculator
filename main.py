@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QMainWindow, QPushButton, QColorDialog
 from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QColor
 from Graphicka import Ui_Dialog
-from logic import MathExecutor
+from Logic import MathExecutor
 
 
 class GreatCalculator(QMainWindow,Ui_Dialog):
