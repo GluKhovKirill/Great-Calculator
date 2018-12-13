@@ -40,7 +40,9 @@ class MathExecutor:
                     "2^x": self.two_in_x,
                     "1/x": self.one_div_x,
                     "log": self.log,
-                    "Rad<->Deg": self.convert_units}
+                    "Rad<->Deg": self.convert_units,
+                    "%": self.percents,
+                    "*100 (un%)": self.un_percents}
         
         first, operator, second, is_degree = self.equation
         if operator in operators:
@@ -320,3 +322,28 @@ class MathExecutor:
         if is_degree:
             return self.degrees_to_radians(first)
         return self.radians_to_degrees(first)
+    
+    def percents(self, number, *nothing):
+        try:
+            number = float(number)
+            perc = number * 100
+            perc = str(perc) + "%"
+            return (True, perc)
+        except ValueError:
+            return (False, "NFLT")
+        except TypeError:
+            return (False, "NONE")
+        except BaseException:
+            return (False, "ERR")  
+    
+    def un_percents(self, perc, *nothing):
+        try:
+            perc = float(perc.replace("%", ""))
+            num = perc / 100
+            return (True, num)
+        except ValueError:
+            return (False, "NFLT")
+        except TypeError:
+            return (False, "NONE")
+        except BaseException:
+            return (False, "ERR")        
