@@ -15,10 +15,11 @@ class GreatCalculator(QMainWindow,Ui_Dialog):
                        "operands_txt": "rgb(67, 42, 102)",
                        "answer_txt": "rgb(18, 36, 0)"}
         self.is_degree = True
-
+        
         super().__init__()
         self.setupUi(self)
-
+        
+        self.setWindowTitle("Калькулятор")
         self.degree.setChecked(True)
         self.pi.setText("\u03C0")
         self.e.setText("\u0190")
